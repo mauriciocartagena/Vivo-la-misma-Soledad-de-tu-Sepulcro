@@ -28,6 +28,8 @@ label start:
 
     e "no me gust ael ingles"
 
+    e "Tercer edit for test"
+
     # This ends the game.
 
     return
