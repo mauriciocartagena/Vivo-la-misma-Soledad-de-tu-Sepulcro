@@ -733,10 +733,10 @@ screen preferences():
 
                 vbox:
                     style_prefix "radio"
-                    label _("Rollback Side")
-                    textbutton _("Disable") action Preference("rollback side", "disable")
-                    textbutton _("Left") action Preference("rollback side", "left")
-                    textbutton _("Right") action Preference("rollback side", "right")
+                    # label _("Rollback Side")
+                    # textbutton _("Disable") action Preference("rollback side", "disable")
+                    # textbutton _("Left") action Preference("rollback side", "left")
+                    # textbutton _("Right") action Preference("rollback side", "right")
 
                 vbox:
                     style_prefix "check"
@@ -783,11 +783,11 @@ screen preferences():
                                 textbutton _("Test") action Play("sound", config.sample_sound)
 
 
-                    if config.has_voice:
-                        label _("Voice Volume")
+                    # if config.has_voice:
+                        # label _("Voice Volume")
 
-                        hbox:
-                            bar value Preference("voice volume")
+                        # hbox:
+                        #     bar value Preference("voice volume")
 
                             if config.sample_voice:
                                 textbutton _("Test") action Play("voice", config.sample_voice)
@@ -795,9 +795,9 @@ screen preferences():
                     if config.has_music or config.has_sound or config.has_voice:
                         null height gui.pref_spacing
 
-                        textbutton _("Mute All"):
-                            action Preference("all mute", "toggle")
-                            style "mute_all_button"
+                        # textbutton _("Mute All"):
+                        #     action Preference("all mute", "toggle")
+                        #     style "mute_all_button"
 
 
 style pref_label is gui_label
