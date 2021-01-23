@@ -367,7 +367,13 @@ screen main_menu():
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
-    use navigation
+    #use navigation
+
+    textbutton _("Comenzar") xpos 50 ypos 650 action Start()
+    textbutton _("Cargar") xpos 100 ypos 700 action ShowMenu("load")
+    textbutton _("opciones") xpos 150 ypos 750 action ShowMenu("preferences")
+    textbutton _("Cargar") xpos 200 ypos 800 action ShowMenu("about")
+    textbutton _("salir") xpos 250 ypos 850 action Quit(confirm=not main_menu)
 
     if gui.show_name:
 

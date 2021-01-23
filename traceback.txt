@@ -1,38 +1,36 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 210, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 494, in script
+  File "game/main_menu.rpy", line 13, in script
     python hide:
-  File "renpy/common/00keymap.rpy", line 494, in <module>
+  File "game/main_menu.rpy", line 13, in script
     python hide:
-  File "renpy/common/00keymap.rpy", line 504, in _execute_python_hide
-    renpy.load("_reload-2")
-Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+  File "game/main_menu.rpy", line 13, in <module>
+    python hide:
+  File "game/main_menu.rpy", line 19, in _execute_python_hide
+    'Quit Game' : dict(xpos=550, ypos=490, xanchor='left', yanchor='top'),
+Exception: config.main_menu_positions is not a known configuration variable.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 210, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 494, in script
+  File "renpy/bootstrap.py", line 326, in bootstrap
+    renpy.main.main()
+  File "renpy/main.py", line 515, in main
+    renpy.game.context().run(node)
+  File "game/main_menu.rpy", line 13, in script
+    python hide:
+  File "game/main_menu.rpy", line 13, in script
     python hide:
   File "renpy/ast.py", line 913, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "renpy/python.py", line 2111, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "renpy/common/00keymap.rpy", line 494, in <module>
+  File "game/main_menu.rpy", line 13, in <module>
     python hide:
-  File "renpy/common/00keymap.rpy", line 504, in _execute_python_hide
-    renpy.load("_reload-2")
-  File "renpy/loadsave.py", line 767, in load
-    log.unfreeze(roots, label="_after_load")
-  File "renpy/python.py", line 2066, in unfreeze
-    self.rollback(0, force=True, label=label, greedy=greedy, on_load=True)
-  File "renpy/python.py", line 1898, in rollback
-    self.load_failed()
-  File "renpy/python.py", line 1816, in load_failed
-    raise Exception("Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?")
-Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+  File "game/main_menu.rpy", line 19, in _execute_python_hide
+    'Quit Game' : dict(xpos=550, ypos=490, xanchor='left', yanchor='top'),
+  File "renpy/defaultstore.py", line 106, in __setattr__
+    raise Exception('config.%s is not a known configuration variable.' % (name))
+Exception: config.main_menu_positions is not a known configuration variable.
 
