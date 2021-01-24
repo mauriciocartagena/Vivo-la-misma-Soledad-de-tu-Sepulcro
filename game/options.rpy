@@ -14,6 +14,23 @@
 
 define config.name = _("Vivo la misma Soledad de tu Sepulcro")
 
+####### Personal styles #######
+
+## in game
+define gui.text_font = "./fonts/HachiMaruPop-Regular.ttf"
+
+## in main
+define gui.interface_text_font = "./fonts/HachiMaruPop-Regular.ttf"
+
+## in buttons
+
+define gui.button_text_font = "./fonts/HachiMaruPop-Regular.ttf"
+
+
+
+
+
+
 
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
@@ -38,6 +55,7 @@ define gui.about = _p("""
 ## or semicolons.
 
 define build.name = "VivolamismaSoledaddetuSepulcro"
+
 
 
 ## Sounds and music ############################################################

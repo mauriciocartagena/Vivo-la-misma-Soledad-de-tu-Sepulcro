@@ -1,4 +1,4 @@
-Wed Jan 20 20:25:30 2021
+Sun Jan 24 03:33:56 2021
 Darwin-20.2.0-x86_64-i386-64bit
 Ren'Py 7.4.0.1167
  
@@ -7,8 +7,8 @@ Bootstrap to the start of init.init took 0.08s
 Early init took 0.00s
 Loader init took 0.01s
 Loading error handling took 0.03s
-Loading script took 0.18s
-Loading save slot metadata. took 0.01s
+Loading script took 0.22s
+Loading save slot metadata. took 0.00s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
 Running init code took 0.05s
@@ -189,4 +189,18 @@ Texture testing:
 Screen sizes: virtual=(1920, 1080) physical=(1338, 753) drawable=(2676, 1506)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 0.973861932755s
+Total time until interface ready: 1.05277991295s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
