@@ -1,19 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00keymap.rpy", line 459, in script
+  File "game/main_menu.rpy", line 13, in script
     python hide:
+<<<<<<< HEAD
   File "renpy/common/00keymap.rpy", line 459, in script
     python hide:
   File "renpy/common/00keymap.rpy", line 459, in <module>
+=======
+  File "game/main_menu.rpy", line 13, in script
+>>>>>>> 1bc5a6c59f0432742f6081b657dea4436bac35d0
     python hide:
-  File "renpy/common/00keymap.rpy", line 478, in _execute_python_hide
-    renpy.save("_reload-1", "reload save game")
-AttributeError: 'NoneType' object has no attribute 'stores'
+  File "game/main_menu.rpy", line 13, in <module>
+    python hide:
+  File "game/main_menu.rpy", line 19, in _execute_python_hide
+    'Quit Game' : dict(xpos=550, ypos=490, xanchor='left', yanchor='top'),
+Exception: config.main_menu_positions is not a known configuration variable.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
+<<<<<<< HEAD
   File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/bootstrap.py", line 326, in bootstrap
     renpy.main.main()
   File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/main.py", line 505, in main
@@ -43,20 +50,25 @@ Full traceback:
   File "renpy/common/00keymap.rpy", line 459, in script
     python hide:
   File "renpy/common/00keymap.rpy", line 459, in script
+=======
+  File "renpy/bootstrap.py", line 326, in bootstrap
+    renpy.main.main()
+  File "renpy/main.py", line 515, in main
+    renpy.game.context().run(node)
+  File "game/main_menu.rpy", line 13, in script
     python hide:
-  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/ast.py", line 913, in execute
+  File "game/main_menu.rpy", line 13, in script
+>>>>>>> 1bc5a6c59f0432742f6081b657dea4436bac35d0
+    python hide:
+  File "renpy/ast.py", line 913, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/python.py", line 2111, in py_exec_bytecode
+  File "renpy/python.py", line 2111, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "renpy/common/00keymap.rpy", line 459, in <module>
+  File "game/main_menu.rpy", line 13, in <module>
     python hide:
-  File "renpy/common/00keymap.rpy", line 478, in _execute_python_hide
-    renpy.save("_reload-1", "reload save game")
-  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/loadsave.py", line 392, in save
-    roots = renpy.game.log.freeze(None)
-  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/python.py", line 2008, in freeze
-    self.complete(False)
-  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/python.py", line 1614, in complete
-    self.current.stores[name], self.current.delta_ebc[name] = sd.get_changes(begin)
-AttributeError: 'NoneType' object has no attribute 'stores'
+  File "game/main_menu.rpy", line 19, in _execute_python_hide
+    'Quit Game' : dict(xpos=550, ypos=490, xanchor='left', yanchor='top'),
+  File "renpy/defaultstore.py", line 106, in __setattr__
+    raise Exception('config.%s is not a known configuration variable.' % (name))
+Exception: config.main_menu_positions is not a known configuration variable.
 
