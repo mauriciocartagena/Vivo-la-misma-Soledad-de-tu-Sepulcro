@@ -17,14 +17,14 @@ define config.name = _("Vivo la misma Soledad de tu Sepulcro")
 ####### Personal styles #######
 
 ## in game
-define gui.text_font = "./fonts/HachiMaruPop-Regular.ttf"
+#define gui.text_font = "./fonts/HachiMaruPop-Regular.ttf"
 
 ## in main
-define gui.interface_text_font = "./fonts/HachiMaruPop-Regular.ttf"
+#define gui.interface_text_font = "./fonts/HachiMaruPop-Regular.ttf"
 
 ## in buttons
 
-define gui.button_text_font = "./fonts/HachiMaruPop-Regular.ttf"
+#define gui.button_text_font = "./fonts/HachiMaruPop-Regular.ttf"
 
 
 
@@ -40,7 +40,7 @@ define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "1.0"
+#define config.version = "1.0"
 
 
 ## Text that is placed on the game's about screen. Place the text between the

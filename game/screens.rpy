@@ -367,13 +367,13 @@ screen main_menu():
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
-    #use navigation
+    use navigation
 
-    textbutton _("Comenzar") xpos 50 ypos 650 action Start()
-    textbutton _("Cargar") xpos 100 ypos 700 action ShowMenu("load")
-    textbutton _("opciones") xpos 150 ypos 750 action ShowMenu("preferences")
-    textbutton _("Cargar") xpos 200 ypos 800 action ShowMenu("about")
-    textbutton _("salir") xpos 250 ypos 850 action Quit(confirm=not main_menu)
+    #textbutton _("Comenzar") xpos 50 ypos 650 action Start()
+    #textbutton _("Cargar") xpos 100 ypos 700 action ShowMenu("load")
+    #textbutton _("opciones") xpos 150 ypos 750 action ShowMenu("preferences")
+    #textbutton _("Cargar") xpos 200 ypos 800 action ShowMenu("about")
+    #textbutton _("salir") xpos 250 ypos 850 action Quit(confirm=not main_menu)
 
     if gui.show_name:
 
@@ -736,6 +736,11 @@ screen preferences():
                         label _("Display")
                         textbutton _("Window") action Preference("display", "window")
                         textbutton _("Fullscreen") action Preference("display", "fullscreen")
+                        label _("Skip")
+                        textbutton _("Unseen Text") action Preference("skip", "toggle")
+                        textbutton _("After Choices") action Preference("after choices", "toggle")
+                        textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
+                        
 
                 vbox:
                     style_prefix "radio"
@@ -745,23 +750,8 @@ screen preferences():
                     # textbutton _("Right") action Preference("rollback side", "right")
 
                 vbox:
-                    style_prefix "check"
-                    label _("Skip")
-                    textbutton _("Unseen Text") action Preference("skip", "toggle")
-                    textbutton _("After Choices") action Preference("after choices", "toggle")
-                    textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
-
-                ## Additional vboxes of type "radio_pref" or "check_pref" can be
-                ## added here, to add additional creator-defined preferences.
-
-            null height (4 * gui.pref_spacing)
-
-            hbox:
-                style_prefix "slider"
-                box_wrap True
-
-                vbox:
-
+                    style_prefix "slider"
+                    box_wrap True
                     label _("Text Speed")
 
                     bar value Preference("text speed")
@@ -769,8 +759,6 @@ screen preferences():
                     label _("Auto-Forward Time")
 
                     bar value Preference("auto-forward time")
-
-                vbox:
 
                     if config.has_music:
                         label _("Music Volume")
@@ -788,22 +776,17 @@ screen preferences():
                             if config.sample_sound:
                                 textbutton _("Test") action Play("sound", config.sample_sound)
 
+                    # if config.sample_voice:
+                    #     textbutton _("Test") action Play("voice", config.sample_voice)
 
-                    # if config.has_voice:
-                        # label _("Voice Volume")
+                    # if config.has_music or config.has_sound or config.has_voice:
+                    #     null height gui.pref_spacing
 
-                        # hbox:
-                        #     bar value Preference("voice volume")
 
-                            if config.sample_voice:
-                                textbutton _("Test") action Play("voice", config.sample_voice)
+                ## Additional vboxes of type "radio_pref" or "check_pref" can be
+                ## added here, to add additional creator-defined preferences.
 
-                    if config.has_music or config.has_sound or config.has_voice:
-                        null height gui.pref_spacing
-
-                        # textbutton _("Mute All"):
-                        #     action Preference("all mute", "toggle")
-                        #     style "mute_all_button"
+            null height (4 * gui.pref_spacing)
 
 
 style pref_label is gui_label

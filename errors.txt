@@ -2,22 +2,9 @@
 errors listed below, and try again.
 
 
-<<<<<<< HEAD
-File "game/options.rpy", line 18: expected 'word' not found.
-    define.gui.text_font = "./fonts/HachiMaruPop-Regular.ttf"
-          ^
+File "game/screens.rpy", line 779: vbox expects a non-empty block.
+    if config.sample_voice:
+                           ^
 
 Ren'Py Version: Ren'Py 7.4.0.1167
-Sun Jan 24 03:16:24 2021
-=======
-File "game/tutorial 14 mainmenu.rpy", line 4: expected statement.
-    textbutton _("Comenzar") xpos 0 ypos 0 action Start()
-                ^
-
-File "game/tutorial 14 mainmenu.rpy", line 32: end of line expected.
-    imagebutton idle "np_idle.png" hover "np_hover.png" xpos 500 ypos 300 focus_mask True action Start() 
-                                   ^
-
-Ren'Py Version: Ren'Py 7.4.0.1167
-Sat Jan 23 17:56:25 2021
->>>>>>> 1bc5a6c59f0432742f6081b657dea4436bac35d0
+Tue Jan 26 21:42:20 2021
