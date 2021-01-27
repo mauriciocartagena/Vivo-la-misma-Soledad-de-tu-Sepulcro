@@ -1,35 +1,32 @@
-﻿# The script of the game goes in this file.
+﻿# Coloca el código de tu juego en este archivo.
 
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
+# Declara los personajes usados en el juego como en el ejemplo:
 
 define e = Character("Eileen")
 
 
-# The game starts here.
+# El juego comienza aquí.
 
 label start:
 
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
+    # Muestra una imagen de fondo: Aquí se usa un marcador de posición por
+    # defecto. Es posible añadir un archivo en el directorio 'images' con el
+    # nombre "bg room.png" or "bg room.jpg" para que se muestre aquí.
 
     scene bg room
 
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
+    # Muestra un personaje: Se usa un marcador de posición. Es posible
+    # reemplazarlo añadiendo un archivo llamado "eileen happy.png" al directorio
+    # 'images'.
 
     show eileen happy
 
-    # These display lines of dialogue.
+    # Presenta las líneas del diálogo.
 
-    e "Hello World."
+    e "Has creado un nuevo juego Ren'Py."
 
-    e "no me gust ael ingles"
+    e "Añade una historia, imágenes y música, ¡y puedes presentarlo al mundo!"
 
-    e "Tercer edit for test"
-
-    # This ends the game.
+    # Finaliza el juego:
 
     return
