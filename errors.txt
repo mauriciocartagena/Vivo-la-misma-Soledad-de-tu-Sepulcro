@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 779: vbox expects a non-empty block.
-    if config.sample_voice:
-                           ^
+File "game/options.rpy", line 16: invalid syntax
+    _("Vivo la misma Soledad de tu Sepulcroos") xpos 100 ypos -35
+                                                    ^
 
 Ren'Py Version: Ren'Py 7.4.0.1167
-Tue Jan 26 21:42:20 2021
+Wed Jan 27 22:34:12 2021

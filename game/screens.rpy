@@ -301,7 +301,7 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("Comenzar") action Start()
+            textbutton _("Comenzar") xpos 100 ypos -50 action Start()
 
         else:
 
@@ -309,9 +309,9 @@ screen navigation():
 
             textbutton _("Guardar") action ShowMenu("save")
 
-        textbutton _("Cargar") action ShowMenu("load")
+        textbutton _("Cargar") xpos 110 ypos -35 action ShowMenu("load")
 
-        textbutton _("Opciones") action ShowMenu("preferences")
+        textbutton _("Opciones") xpos 100 ypos -20 action ShowMenu("preferences")
 
         if _in_replay:
 
@@ -321,18 +321,18 @@ screen navigation():
 
             textbutton _("Menú principal") action MainMenu()
 
-        textbutton _("Acerca de") action ShowMenu("about")
+        textbutton _("Acerca de") xpos 90 ypos -5 action ShowMenu("about")
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
             ## La ayuda no es necesaria ni relevante en dispositivos móviles.
-            textbutton _("Ayuda") action ShowMenu("help")
+            textbutton _("Ayuda") xpos 100 ypos 5 action ShowMenu("help")
 
         if renpy.variant("pc"):
 
             ## El botón de salida está prohibido en iOS y no es necesario en
             ## Android y Web.
-            textbutton _("Salir") action Quit(confirm=not main_menu)
+            textbutton _("Salir") xpos 110 ypos 25 action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
