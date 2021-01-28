@@ -1,32 +1,38 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00keymap.rpy", line 459, in script
+  File "renpy/common/00start.rpy", line 210, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 494, in script
     python hide:
-  File "renpy/common/00keymap.rpy", line 459, in <module>
+  File "renpy/common/00keymap.rpy", line 494, in <module>
     python hide:
-  File "renpy/common/00keymap.rpy", line 478, in _execute_python_hide
-    renpy.save("_reload-1", "reload save game")
-AttributeError: 'NoneType' object has no attribute 'stores'
+  File "renpy/common/00keymap.rpy", line 504, in _execute_python_hide
+    renpy.load("_reload-2")
+Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00keymap.rpy", line 459, in script
+  File "renpy/common/00start.rpy", line 210, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 494, in script
     python hide:
   File "renpy/ast.py", line 913, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "renpy/python.py", line 2111, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "renpy/common/00keymap.rpy", line 459, in <module>
+  File "renpy/common/00keymap.rpy", line 494, in <module>
     python hide:
-  File "renpy/common/00keymap.rpy", line 478, in _execute_python_hide
-    renpy.save("_reload-1", "reload save game")
-  File "renpy/loadsave.py", line 392, in save
-    roots = renpy.game.log.freeze(None)
-  File "renpy/python.py", line 2008, in freeze
-    self.complete(False)
-  File "renpy/python.py", line 1614, in complete
-    self.current.stores[name], self.current.delta_ebc[name] = sd.get_changes(begin)
-AttributeError: 'NoneType' object has no attribute 'stores'
+  File "renpy/common/00keymap.rpy", line 504, in _execute_python_hide
+    renpy.load("_reload-2")
+  File "renpy/loadsave.py", line 767, in load
+    log.unfreeze(roots, label="_after_load")
+  File "renpy/python.py", line 2066, in unfreeze
+    self.rollback(0, force=True, label=label, greedy=greedy, on_load=True)
+  File "renpy/python.py", line 1898, in rollback
+    self.load_failed()
+  File "renpy/python.py", line 1816, in load_failed
+    raise Exception("Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?")
+Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
 
