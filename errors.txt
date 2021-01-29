@@ -2,9 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/options.rpy", line 16: invalid syntax
-    _("Vivo la misma Soledad de tu Sepulcroos") xpos 100 ypos -35
-                                                    ^
+File "game/script.rpy", line 29: is not terminated with a newline. (Check strings and parenthesis.)
+        """"
 
 Ren'Py Version: Ren'Py 7.4.0.1167
-Wed Jan 27 22:34:12 2021
+Fri Jan 29 15:12:06 2021
