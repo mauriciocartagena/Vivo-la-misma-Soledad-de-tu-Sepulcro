@@ -2,8 +2,17 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 29: is not terminated with a newline. (Check strings and parenthesis.)
-        """"
+File "game/script.rpy", line 70: expected statement.
+    <<<<<<< HEAD
+                ^
+
+File "game/script.rpy", line 71: expected statement.
+    =======
+          ^
+
+File "game/script.rpy", line 73: expected statement.
+    >>>>>>> 2c127bfdf575174094745c3986c67da964174bad
+                                                    ^
 
 Ren'Py Version: Ren'Py 7.4.0.1167
-Fri Jan 29 15:12:06 2021
+Fri Jan 29 15:27:40 2021
