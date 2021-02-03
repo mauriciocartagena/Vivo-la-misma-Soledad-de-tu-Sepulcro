@@ -305,9 +305,9 @@ screen navigation():
 
         else:
 
-            textbutton _("Historial") action ShowMenu("history")
+            textbutton _("Historial") xpos 100 ypos -70 action ShowMenu("history")
 
-            textbutton _("Guardar") action ShowMenu("save")
+            textbutton _("Guardar") xpos 100 ypos -50 action ShowMenu("save")
 
         textbutton _("Cargar") xpos 110 ypos -35 action ShowMenu("load")
 
@@ -319,7 +319,7 @@ screen navigation():
 
         elif not main_menu:
 
-            textbutton _("Menú principal") action MainMenu()
+            textbutton _("Menú principal") xpos 70 ypos -5 action MainMenu()
 
         textbutton _("Acerca de") xpos 90 ypos -5 action ShowMenu("about")
 
@@ -729,13 +729,13 @@ screen preferences():
 
                       vbox:
                         style_prefix "radio"
-                        label _("Display")
-                        textbutton _("Ventana") action Preference("display", "window")
-                        textbutton _("Pant. Completo") action Preference("display", "fullscreen")
-                        label _("Saltar")
-                        textbutton _("Texto no visto") action Preference("skip", "toggle")
-                        textbutton _("Trans opciones") action Preference("after choices", "toggle")
-                        textbutton _("Transiciónes") action InvertSelected(Preference("transitions", "toggle"))
+                        label _("Display") xpos 90 ypos -5
+                        textbutton _("Ventana") xpos 90 ypos -5 action Preference("display", "window")
+                        textbutton _("Pant. Completo") xpos 90 ypos -5 action Preference("display", "fullscreen")
+                        label _("Saltar") xpos 90 ypos -5
+                        textbutton _("Texto no visto") xpos 90 ypos -5 action Preference("skip", "toggle")
+                        textbutton _("Trans opciones") xpos 90 ypos -5 action Preference("after choices", "toggle")
+                        textbutton _("Transiciónes") xpos 90 ypos -5 action InvertSelected(Preference("transitions", "toggle"))
 
                 vbox:
                     style_prefix "radio"
@@ -748,7 +748,7 @@ screen preferences():
                     style_prefix "slider"
                     box_wrap True
 
-                    label _("Veloc. Texto")
+                    label _("Veloc. Texto") xpos 90 ypos -5
 
                     bar value Preference("text speed")
 
