@@ -299,11 +299,13 @@ screen cambiar_valor():
 
     if cambiar_valor:
         
-        hbox:
+        vbox:
             style_prefix "quick"
 
-            xalign 0.5
-            yalign 0.9
+            # xalign 0.5
+            # yalign 1.0
+            xpos 1650
+            ypos 750
 
             textbutton _("Mostrar") action [Show("DOBLE_QUICK_MENU")] 
             textbutton _("Ocultar") action [Hide("DOBLE_QUICK_MENU")] 
