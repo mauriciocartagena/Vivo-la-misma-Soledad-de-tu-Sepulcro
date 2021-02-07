@@ -1,38 +1,62 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 210, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 494, in script
-    python hide:
-  File "renpy/common/00keymap.rpy", line 494, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 504, in _execute_python_hide
-    renpy.load("_reload-2")
-Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+  File "game/script.rpy", line 38, in script
+    ""
+  File "renpy/common/00nvl_mode.rpy", line 381, in do_display
+    **display_args)
+  File "game/screens.rpy", line 302, in execute
+    screen quick_menu():
+  File "game/screens.rpy", line 302, in execute
+    screen quick_menu():
+  File "game/screens.rpy", line 307, in execute
+    if quick_menu:
+  File "game/screens.rpy", line 307, in <module>
+    if quick_menu:
+NameError: name 'quick_menu' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 210, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 494, in script
-    python hide:
-  File "renpy/ast.py", line 913, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "renpy/python.py", line 2111, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "renpy/common/00keymap.rpy", line 494, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 504, in _execute_python_hide
-    renpy.load("_reload-2")
-  File "renpy/loadsave.py", line 767, in load
-    log.unfreeze(roots, label="_after_load")
-  File "renpy/python.py", line 2066, in unfreeze
-    self.rollback(0, force=True, label=label, greedy=greedy, on_load=True)
-  File "renpy/python.py", line 1898, in rollback
-    self.load_failed()
-  File "renpy/python.py", line 1816, in load_failed
-    raise Exception("Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?")
-Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+  File "game/script.rpy", line 38, in script
+    ""
+  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/ast.py", line 706, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/exports.py", line 1384, in say
+    who(what, *args, **kwargs)
+  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/character.py", line 1179, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "renpy/common/00nvl_mode.rpy", line 381, in do_display
+    **display_args)
+  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/character.py", line 601, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/ui.py", line 298, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/display/core.py", line 2978, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
+  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/display/core.py", line 3378, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/display/core.py", line 566, in visit_all
+    d.visit_all(callback, seen)
+  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/display/core.py", line 566, in visit_all
+    d.visit_all(callback, seen)
+  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/display/core.py", line 566, in visit_all
+    d.visit_all(callback, seen)
+  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/display/screen.py", line 432, in visit_all
+    callback(self)
+  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/display/core.py", line 3378, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/display/screen.py", line 443, in per_interact
+    self.update()
+  File "/Users/user/Desktop/renpy-7.4.0-sdk/renpy/display/screen.py", line 631, in update
+    self.screen.function(**self.scope)
+  File "game/screens.rpy", line 302, in execute
+    screen quick_menu():
+  File "game/screens.rpy", line 302, in execute
+    screen quick_menu():
+  File "game/screens.rpy", line 307, in execute
+    if quick_menu:
+  File "game/screens.rpy", line 307, in <module>
+    if quick_menu:
+NameError: name 'quick_menu' is not defined
 

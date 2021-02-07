@@ -240,14 +240,10 @@ style choice_button_text is default:
 ## El menú rápido es presentado en el juego para ofrecer fácil acceso a los
 ## menus externos al juego.
 
-screen quick_menu():
 
-    ## Asegura que esto aparezca en la parte superior de otras pantallas.
-    zorder 100
+screen DOBLE_QUICK_MENU():        #---------- don't forget to create/rename it!
+    hbox:
 
-    if quick_menu:
-
-        hbox:
             style_prefix "quick"
 
             xalign 0.5
@@ -261,14 +257,61 @@ screen quick_menu():
             textbutton _("Guardar R.") action QuickSave()
             textbutton _("Cargar R.") action QuickLoad()
             textbutton _("Prefs.") action ShowMenu('preferences')
+        
+
+
+screen quick_menu():
+
+    ## Asegura que esto aparezca en la parte superior de otras pantallas.
+    zorder 100
+
+    if quick_menu:
+
+        hbox:
+            style_prefix "quick"
+
+            # xalign 0.5
+            # yalign 1.0
+            xpos 1750
+            ypos 650
+
+            textbutton _("Atrás") action Rollback()
+            textbutton _("Historial") action ShowMenu('history')
+            textbutton _("Saltar") action Skip() alternate Skip(fast=True, confirm=True)
+            textbutton _("Auto") action Preference("auto-forward", "toggle")
+            textbutton _("Guardar") action ShowMenu('save')
+            textbutton _("Guardar R.") action QuickSave()
+            textbutton _("Cargar R.") action QuickLoad()
+            textbutton _("Prefs.") action ShowMenu('preferences')
+
 
 
 ## Este código asegura que la pantalla 'quick_menu' se muestra en el juego,
 ## mientras el jugador no haya escondido explícitamente la interfaz.
-init python:
-    config.overlay_screens.append("quick_menu")
+# init python:
+#     config.overlay_screens.append("quick_menu")
 
-default quick_menu = True
+# default quick_menu = False
+
+screen cambiar_valor():
+    
+    zorder 200
+
+    if cambiar_valor:
+        
+        hbox:
+            style_prefix "quick"
+
+            xalign 0.5
+            yalign 0.9
+
+            textbutton _("Mostrar") action [Show("DOBLE_QUICK_MENU")] 
+            textbutton _("Ocultar") action [Hide("DOBLE_QUICK_MENU")] 
+
+init python:
+    config.overlay_screens.append("cambiar_valor")
+    
+default cambiar_valor = True
 
 style quick_button is default
 style quick_button_text is button_text
