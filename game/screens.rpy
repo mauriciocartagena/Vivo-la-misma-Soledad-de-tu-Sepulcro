@@ -772,7 +772,7 @@ screen preferences():
 
                 if renpy.variant("pc") or renpy.variant("web"):
 
-                      vbox:
+                    vbox:
                         style_prefix "radio"
                         label _("Display") xpos 90 ypos -5
                         textbutton _("Ventana") xpos 90 ypos -5 action Preference("display", "window")
