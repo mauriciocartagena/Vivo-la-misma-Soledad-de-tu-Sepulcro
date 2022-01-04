@@ -265,10 +265,36 @@ screen quick_menu():
 
 ## Este código asegura que la pantalla 'quick_menu' se muestra en el juego,
 ## mientras el jugador no haya escondido explícitamente la interfaz.
+
+
+screen cambiar_valor():
+    
+    zorder 200
+
+    if cambiar_valor:
+        
+        hbox:
+            style_prefix "quick"
+            xalign 0.5
+            yalign 1.0
+            # xalign 0.5
+            # yalign 1.0
+            # xpos 1295
+            # ypos 818
+
+            textbutton _("Mostrar") action [Show("quick_menu")] 
+            textbutton _("Ocultar") action [Hide("quick_menu")] 
+
 init python:
     config.overlay_screens.append("quick_menu")
+    config.overlay_screens.append("cambiar_valor")
+    
+default cambiar_valor = True
+default quick_menu = False
 
-default quick_menu = True
+# init python:
+#     config.overlay_screens.append("quick_menu")
+
 
 style quick_button is default
 style quick_button_text is button_text
