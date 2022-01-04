@@ -243,9 +243,9 @@ style choice_button_text is default:
 screen quick_menu():
 
     ## Asegura que esto aparezca en la parte superior de otras pantallas.
-    zorder 100
+    # zorder 100
 
-    if quick_menu:
+    # if quick_menu:
 
         hbox:
             style_prefix "quick"
@@ -275,7 +275,7 @@ screen cambiar_valor():
         
         hbox:
             style_prefix "quick"
-            xalign 0.5
+            xalign 1.0
             yalign 1.0
             # xalign 0.5
             # yalign 1.0
@@ -286,14 +286,13 @@ screen cambiar_valor():
             textbutton _("Ocultar") action [Hide("quick_menu")] 
 
 init python:
-    config.overlay_screens.append("quick_menu")
     config.overlay_screens.append("cambiar_valor")
     
 default cambiar_valor = True
-default quick_menu = False
 
 # init python:
 #     config.overlay_screens.append("quick_menu")
+# default quick_menu = True
 
 
 style quick_button is default
