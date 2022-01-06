@@ -3,3 +3,4 @@ log.txt
 */cache
 *.save
 .renpy-sdk
+persistent
