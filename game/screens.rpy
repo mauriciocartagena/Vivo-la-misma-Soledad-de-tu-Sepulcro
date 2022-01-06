@@ -136,7 +136,7 @@ style window:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    background Image("gui/textboxBlanco.png", xalign=0.5, yalign=1.0)
 
 style namebox:
     xpos gui.name_xpos
@@ -213,7 +213,7 @@ screen choice(items):
 
 
 ## Cuando es 'True', el encabezamiento será dicho por el narrador. Si es
-## 'False', será presentado como un botón inactivo. 
+## 'False', será presentado como un botón inactivo.
 define config.narrator_menu = True
 
 
@@ -223,7 +223,7 @@ style choice_button_text is button_text
 
 style choice_vbox:
     xalign 0.5
-    ypos 405
+    ypos 270
     yanchor 0.5
 
     spacing gui.choice_spacing
@@ -240,10 +240,14 @@ style choice_button_text is default:
 ## El menú rápido es presentado en el juego para ofrecer fácil acceso a los
 ## menus externos al juego.
 
+screen quick_menu():
 
-screen DOBLE_QUICK_MENU():        #---------- don't forget to create/rename it!
-    hbox:
+    ## Asegura que esto aparezca en la parte superior de otras pantallas.
+    # zorder 100
 
+    # if quick_menu:
+
+        hbox:
             style_prefix "quick"
 
             xalign 0.5
@@ -257,41 +261,11 @@ screen DOBLE_QUICK_MENU():        #---------- don't forget to create/rename it!
             textbutton _("Guardar R.") action QuickSave()
             textbutton _("Cargar R.") action QuickLoad()
             textbutton _("Prefs.") action ShowMenu('preferences')
-        
-
-
-screen quick_menu():
-
-    ## Asegura que esto aparezca en la parte superior de otras pantallas.
-    zorder 100
-
-    if quick_menu:
-
-        hbox:
-            style_prefix "quick"
-
-            # xalign 0.5
-            # yalign 1.0
-            xpos 1750
-            ypos 650
-
-            textbutton _("Atrás") action Rollback()
-            textbutton _("Historial") action ShowMenu('history')
-            textbutton _("Saltar") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Guardar") action ShowMenu('save')
-            textbutton _("Guardar R.") action QuickSave()
-            textbutton _("Cargar R.") action QuickLoad()
-            textbutton _("Prefs.") action ShowMenu('preferences')
-
 
 
 ## Este código asegura que la pantalla 'quick_menu' se muestra en el juego,
 ## mientras el jugador no haya escondido explícitamente la interfaz.
-# init python:
-#     config.overlay_screens.append("quick_menu")
 
-# default quick_menu = False
 
 screen cambiar_valor():
     
@@ -301,19 +275,25 @@ screen cambiar_valor():
         
         hbox:
             style_prefix "quick"
-
+            xalign 1.0
+            yalign 1.0
             # xalign 0.5
             # yalign 1.0
-            xpos 1295
-            ypos 818
+            # xpos 1295
+            # ypos 818
 
-            textbutton _("Mostrar") action [Show("DOBLE_QUICK_MENU")] 
-            textbutton _("Ocultar") action [Hide("DOBLE_QUICK_MENU")] 
+            textbutton _("Mostrar") action [Show("quick_menu")] 
+            textbutton _("Ocultar") action [Hide("quick_menu")] 
 
 init python:
     config.overlay_screens.append("cambiar_valor")
     
 default cambiar_valor = True
+
+# init python:
+#     config.overlay_screens.append("quick_menu")
+# default quick_menu = True
+
 
 style quick_button is default
 style quick_button_text is button_text
@@ -338,7 +318,6 @@ screen navigation():
 
     vbox:
         style_prefix "navigation"
-
         xpos gui.navigation_xpos
         yalign 0.5
 
@@ -346,17 +325,17 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("Comenzar") xpos 100 ypos -50 action Start()
+            textbutton _("Comenzar") action Start()
 
         else:
 
-            textbutton _("Historial") xpos 100 ypos -70 action ShowMenu("history")
+            textbutton _("Historial") action ShowMenu("history")
 
-            textbutton _("Guardar") xpos 100 ypos -50 action ShowMenu("save")
+            textbutton _("Guardar") action ShowMenu("save")
 
-        textbutton _("Cargar") xpos 110 ypos -35 action ShowMenu("load")
+        textbutton _("Cargar") action ShowMenu("load")
 
-        textbutton _("Opciones") xpos 100 ypos -20 action ShowMenu("preferences")
+        textbutton _("Opciones") action ShowMenu("preferences")
 
         if _in_replay:
 
@@ -364,21 +343,18 @@ screen navigation():
 
         elif not main_menu:
 
-            textbutton _("Menú principal") xpos 70 ypos -5 action MainMenu()
+            textbutton _("Menú principal") action MainMenu()
 
-        textbutton _("Acerca de") xpos 90 ypos -5 action ShowMenu("about")
-
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-
-            ## La ayuda no es necesaria ni relevante en dispositivos móviles.
-            textbutton _("Ayuda") xpos 100 ypos 5 action ShowMenu("help")
+        textbutton _("Acerca de") action ShowMenu("about")
 
         if renpy.variant("pc"):
 
-            ## El botón de salida está prohibido en iOS y no es necesario en
-            ## Android y Web.
-            textbutton _("Salir") xpos 110 ypos 25 action Quit(confirm=not main_menu)
+            ## La ayuda no es necesaria ni relevante en dispositivos móviles.
+            textbutton _("Ayuda") action ShowMenu("help")
 
+            ## El botón de salida está prohibido en iOS y no es necesario en
+            ## Android.
+            textbutton _("Salir") action Quit(confirm=not main_menu)
 
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
@@ -431,17 +407,17 @@ style main_menu_title is main_menu_text
 style main_menu_version is main_menu_text
 
 style main_menu_frame:
-    xsize 420
+    xsize 280
     yfill True
 
     background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
-    xalign 1.0
-    xoffset -30
-    xmaximum 1200
-    yalign 1.0
-    yoffset -30
+    xalign 1.-1
+    xoffset 425
+
+    yalign 0.100
+    yoffset -20
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
@@ -543,32 +519,32 @@ style return_button is navigation_button
 style return_button_text is navigation_button_text
 
 style game_menu_outer_frame:
-    bottom_padding 45
-    top_padding 180
+    bottom_padding 30
+    top_padding 120
 
     background "gui/overlay/game_menu.png"
 
 style game_menu_navigation_frame:
-    xsize 420
+    xsize 280
     yfill True
 
 style game_menu_content_frame:
-    left_margin 60
-    right_margin 30
-    top_margin 15
+    left_margin 40
+    right_margin 20
+    top_margin 10
 
 style game_menu_viewport:
-    xsize 1380
+    xsize 920
 
 style game_menu_vscrollbar:
     unscrollable gui.unscrollable
 
 style game_menu_side:
-    spacing 15
+    spacing 10
 
 style game_menu_label:
-    xpos 75
-    ysize 180
+    xpos 50
+    ysize 120
 
 style game_menu_label_text:
     size gui.title_text_size
@@ -578,7 +554,7 @@ style game_menu_label_text:
 style return_button:
     xpos gui.navigation_xpos
     yalign 1.0
-    yoffset -45
+    yoffset -30
 
 
 ## Pantalla 'acerca de' ########################################################
@@ -609,7 +585,16 @@ screen about():
             if gui.about:
                 text "[gui.about!t]\n"
 
-            text _("Hecho con {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            text _("Programado por: por_definir")
+            text _("Escrito por: por_definir")
+            text _("Ilustraciones por: por_definir")
+            text _("Musica: {a=https://freesound.org/}Freesound{a=https://freesound.org/}")
+            text _("Hecho con {a=https://www.renpy.org/}Ren'Py")
+
+
+## Esto se redefine en 'options.rpy' para añadir texto a la pantalla 'acerca
+## de'.
+define gui.about = ""
 
 
 style about_label is gui_label
@@ -688,8 +673,8 @@ screen file_slots(title):
 
                         add FileScreenshot(slot) xalign 0.5
 
-                        text FileTime(slot, format=_("{#file_time}%A, %d de %B %Y, %H:%M"), empty=_("vacío")):
-                            style "slot_time_text" xpos 440 ypos -70 
+                        text FileTime(slot, format=_("{#file_time}%A, %d %B %Y, %H:%M"), empty=_("vacío")):
+                            style "slot_time_text"
 
                         text FileSaveName(slot):
                             style "slot_name_text"
@@ -731,8 +716,8 @@ style slot_time_text is slot_button_text
 style slot_name_text is slot_button_text
 
 style page_label:
-    xpadding 75
-    ypadding 5
+    xpadding 50
+    ypadding 3
 
 style page_label_text:
     text_align 0.5
@@ -770,60 +755,71 @@ screen preferences():
             hbox:
                 box_wrap True
 
-                if renpy.variant("pc") or renpy.variant("web"):
+                if renpy.variant("pc"):
 
                     vbox:
                         style_prefix "radio"
-                        label _("Display") xpos 90 ypos -5
-                        textbutton _("Ventana") xpos 90 ypos -5 action Preference("display", "window")
-                        textbutton _("Pant. Completo") xpos 90 ypos -5 action Preference("display", "fullscreen")
-                        label _("Saltar") xpos 90 ypos -5
-                        textbutton _("Texto no visto") xpos 90 ypos -5 action Preference("skip", "toggle")
-                        textbutton _("Trans opciones") xpos 90 ypos -5 action Preference("after choices", "toggle")
-                        textbutton _("Transiciónes") xpos 90 ypos -5 action InvertSelected(Preference("transitions", "toggle"))
+                        label _("Pantalla")
+                        textbutton _("Ventana") action Preference("display", "window")
+                        textbutton _("Pant. completa") action Preference("display", "fullscreen")
+
+
 
                 vbox:
-                    style_prefix "radio"
-                    # label _("Lado de retroceso")
-                    # textbutton _("Desactivar") action Preference("rollback side", "disable")
-                    # textbutton _("Izquierda") action Preference("rollback side", "left")
-                    # textbutton _("Derecha") action Preference("rollback side", "right")
+                    style_prefix "check"
+                    label _("Saltar")
+                    textbutton _("Texto no visto") action Preference("skip", "toggle")
 
-                vbox:
-                    style_prefix "slider"
-                    box_wrap True
-
-                    label _("Veloc. Texto") xpos 90 ypos -5
-
-                    bar value Preference("text speed")
-
-                    label _("Veloc. auto avance")
-
-                    bar value Preference("auto-forward time")
-
-                    if config.has_music:
-                        label _("Volumen musica")
-
-                        hbox:
-                            bar value Preference("music volume")
-
-                    if config.has_sound:
-
-                        label _("Volumen sonido")
-
-                        hbox:
-                            bar value Preference("sound volume")
-
-                            if config.sample_sound:
-                                textbutton _("Test") action Play("sound", config.sample_sound)
-
+                    textbutton _("Transiciones") action InvertSelected(Preference("transitions", "toggle"))
 
                 ## Aquí se pueden añadir 'vboxes' adicionales del tipo
                 ## "radio_pref" o "check_pref" para nuevas preferencias.
 
             null height (4 * gui.pref_spacing)
 
-           
+            hbox:
+                style_prefix "slider"
+                box_wrap True
+
+                vbox:
+
+                    label _("Veloc. texto")
+
+                    bar value Preference("text speed")
+
+                    label _("Veloc. auto-avance")
+
+                    bar value Preference("auto-forward time")
+
+                vbox:
+
+                    if config.has_music:
+                        label _("Volumen música")
+
+                        hbox:
+                            bar value Preference("music volume")
+
+
+                            if config.sample_sound:
+                                textbutton _("Prueba") action Play("sound", config.sample_sound)
+
+
+                    if config.has_voice:
+                        label _("Volumen voz")
+
+                        hbox:
+                            bar value Preference("voice volume")
+
+                            if config.sample_voice:
+                                textbutton _("Prueba") action Play("voice", config.sample_voice)
+
+                    if config.has_music or config.has_sound or config.has_voice:
+                        null height gui.pref_spacing
+
+                        textbutton _("Silencia todo"):
+                            action Preference("all mute", "toggle")
+                            style "mute_all_button"
+
 
 style pref_label is gui_label
 style pref_label_text is gui_label_text
@@ -853,13 +849,13 @@ style mute_all_button_text is check_button_text
 
 style pref_label:
     top_margin gui.pref_spacing
-    bottom_margin 3
+    bottom_margin 2
 
 style pref_label_text:
     yalign 1.0
 
 style pref_vbox:
-    xsize 338
+    xsize 225
 
 style radio_vbox:
     spacing gui.pref_button_spacing
@@ -882,18 +878,18 @@ style check_button_text:
     properties gui.button_text_properties("check_button")
 
 style slider_slider:
-    xsize 525
+    xsize 350
 
 style slider_button:
     properties gui.button_properties("slider_button")
     yalign 0.5
-    left_margin 15
+    left_margin 10
 
 style slider_button_text:
     properties gui.button_text_properties("slider_button")
 
 style slider_vbox:
-    xsize 675
+    xsize 450
 
 
 ## Pantalla de historial #######################################################
@@ -944,7 +940,7 @@ screen history():
 
 ## Esto determina qué etiquetas se permiten en la pantalla de historial.
 
-define gui.history_allow_tags = { "alt", "noalt" }
+define gui.history_allow_tags = set()
 
 
 style history_window is empty
@@ -1005,7 +1001,7 @@ screen help():
         style_prefix "help"
 
         vbox:
-            spacing 23
+            spacing 15
 
             hbox:
 
@@ -1031,7 +1027,7 @@ screen keyboard_help():
 
     hbox:
         label _("Espacio")
-        text _("Avanza el diálogo sin seleccionar opciones.")
+        text _("Avanza el dilogo sin seleccionar opciones.")
 
     hbox:
         label _("Teclas de flecha")
@@ -1064,6 +1060,10 @@ screen keyboard_help():
     hbox:
         label "S"
         text _("Captura la pantalla.")
+
+    hbox:
+        label "Delete"
+        text _("Seleciona con el raton y preciona delete para eliminar partida guardada.")
 
     hbox:
         label "V"
@@ -1131,14 +1131,14 @@ style help_text is gui_text
 
 style help_button:
     properties gui.button_properties("help_button")
-    xmargin 12
+    xmargin 8
 
 style help_button_text:
     properties gui.button_text_properties("help_button")
 
 style help_label:
-    xsize 375
-    right_padding 30
+    xsize 250
+    right_padding 20
 
 style help_label_text:
     size gui.text_size
@@ -1176,7 +1176,7 @@ screen confirm(message, yes_action, no_action):
         vbox:
             xalign .5
             yalign .5
-            spacing 45
+            spacing 30
 
             label _(message):
                 style "confirm_prompt"
@@ -1184,7 +1184,7 @@ screen confirm(message, yes_action, no_action):
 
             hbox:
                 xalign 0.5
-                spacing 150
+                spacing 100
 
                 textbutton _("Sí") action yes_action
                 textbutton _("No") action no_action
@@ -1231,7 +1231,7 @@ screen skip_indicator():
     frame:
 
         hbox:
-            spacing 9
+            spacing 6
 
             text _("Saltando")
 
@@ -1437,7 +1437,7 @@ style nvl_button_text:
 
 style pref_vbox:
     variant "medium"
-    xsize 675
+    xsize 450
 
 ## Ya que puede carecer de ratón, se reempleza el menú rápido con una versión
 ## con menos botones y más grandes, más fáciles de tocar.
@@ -1486,7 +1486,7 @@ style game_menu_outer_frame:
 
 style game_menu_navigation_frame:
     variant "small"
-    xsize 510
+    xsize 340
 
 style game_menu_content_frame:
     variant "small"
@@ -1494,7 +1494,7 @@ style game_menu_content_frame:
 
 style pref_vbox:
     variant "small"
-    xsize 600
+    xsize 400
 
 style bar:
     variant "small"
@@ -1538,4 +1538,4 @@ style slider_pref_vbox:
 
 style slider_pref_slider:
     variant "small"
-    xsize 900
+    xsize 600

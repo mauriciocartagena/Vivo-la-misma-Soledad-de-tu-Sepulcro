@@ -13,18 +13,18 @@
 ##
 ## El _() que rodea la cadena de texto la señala como traducible.
 
-define config.name = _("Vivo la misma Soledad de tu Sepulcroos")
+define config.name = _("Forgetting a Heart")
 
 
 ## Determina si el título dado más arriba se muestra en el menú principal.
 ## Ajústalo a 'False' para esconder el título.
 
-define gui.show_name = True
+define gui.show_name = False
 
 
 ## Versión del juego.
 
-# define config.version = "1.0"
+define config.version = ""
 
 
 ## Texto situado en la pantalla 'Acerca de' del juego. Sitúa el texto entre
@@ -37,7 +37,7 @@ define gui.about = _p("""
 ## Nombre breve del juego para ejecutables y directorios en la distribución.
 ## Debe contener solo carácteres ASCII, sin espacios, comas o puntos y coma.
 
-define build.name = "VivolamismaSoledaddetuSepulcroos"
+define build.name = "Forgetting_a_Heart"
 
 
 ## Sonidos y música ############################################################
@@ -47,21 +47,21 @@ define build.name = "VivolamismaSoledaddetuSepulcroos"
 
 define config.has_sound = True
 define config.has_music = True
-define config.has_voice = True
+define config.has_voice = False
 
 
 ## Para permitir al usuario probar el volumen de los canales de sonido o voz,
 ## descomenta la línea más abajo y ajústala a un sonido de ejemplo.
 
-# define config.sample_sound = "sample-sound.ogg"
-# define config.sample_voice = "sample-voice.ogg"
+#define config.sample_sound = "sample-sound.ogg"
+#define config.sample_voice = "sample-voice.ogg"
 
 
 ## Descomenta la línea siguiente para ajustar un archivo de audio que sonará en
 ## el menú principal. Este archivo seguirá sonando en el juego hasta que sea
 ## detenido o se reproduzca otro archivo.
 
-# define config.main_menu_music = "main-menu-theme.ogg"
+define config.main_menu_music = "sound/main-menu.mp3"
 
 
 ## Transiciones ################################################################
@@ -143,12 +143,12 @@ default preferences.afm_time = 15
 ## Normalmente, este valor no debe ser modificado. Si lo es, debe ser siempre
 ## una cadena literal y no una expresión.
 
-define config.save_directory = "VivolamismaSoledaddetuSepulcroos-1611719620"
+define config.save_directory = "forgettingaheart-1558294167"
 
 
-## Ícono #######################################################################
+## Icono #######################################################################
 ##
-## El ícono mostrado en la barra de tareas.
+## El icono mostrado en la barra de tareas.
 
 define config.window_icon = "gui/window_icon.png"
 
@@ -197,6 +197,12 @@ init python:
 
     build.documentation('*.html')
     build.documentation('*.txt')
+
+## Ajusta la cadena que contiene tu 'Apple Developer ID Application' para
+## permitir el firmado en Mac. Asegúrate de cambiarlo a tu propia ID facilitada
+## por Apple.
+
+# define build.mac_identity = "Developer ID Application: Guy Shy (XHTE5H7Z42)"
 
 
 ## Es necesaria una clave de licencia Google Play para descargar archivos de
