@@ -6,9 +6,11 @@
     {
       "label": "Ren'Py Setup: Set .renpy-sdk path",
       "type": "shell",
-      "command": "echo \"${input:RenPySdk}\" > .renpy-sdk"
+      "command": "echo \"${input:RenPySdk}\" > .renpy-sdk",
+      "problemMatcher": [
+        "$gccte"
+      ]
     },
-
     {
       "label": "Ren'Py: Run",
       "type": "shell",
@@ -37,7 +39,6 @@
       "group": "build",
       "problemMatcher": []
     },
-
     {
       "label": "Ren'Py Windows: Run",
       "type": "shell",
