@@ -247,11 +247,13 @@ screen quick_menu():
 
     # if quick_menu:
 
-        hbox:
+        vbox:
             style_prefix "quick"
 
-            xalign 0.5
+            xalign 0.0
             yalign 1.0
+            #xpos 1095
+            #ypos 118
 
             textbutton _("Atrás") action Rollback()
             textbutton _("Historial") action ShowMenu('history')
@@ -260,7 +262,7 @@ screen quick_menu():
             textbutton _("Guardar") action ShowMenu('save')
             textbutton _("Guardar R.") action QuickSave()
             textbutton _("Cargar R.") action QuickLoad()
-            textbutton _("Prefs.") action ShowMenu('preferences')
+            textbutton _("Prefs.") action ShowMenu('preferences') xpos 1095 ypos 118
 
 
 ## Este código asegura que la pantalla 'quick_menu' se muestra en el juego,
@@ -674,10 +676,10 @@ screen file_slots(title):
                         add FileScreenshot(slot) xalign 0.5
 
                         text FileTime(slot, format=_("{#file_time}%A, %d %B %Y, %H:%M"), empty=_("vacío")):
-                            style "slot_time_text"
+                            style "slot_time_text" xpos 355 ypos -70
 
                         text FileSaveName(slot):
-                            style "slot_name_text"
+                            style "slot_name_text" 
 
                         key "save_delete" action FileDelete(slot)
 

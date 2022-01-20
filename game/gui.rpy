@@ -222,10 +222,10 @@ define gui.choice_button_text_insensitive_color = "#444444"
 ## button' como los otros botones.
 
 ## Botón de guardar partida
-define gui.slot_button_width = 276
-define gui.slot_button_height = 206
-define gui.slot_button_borders = Borders(10, 10, 10, 10)
-define gui.slot_button_text_size = 14
+define gui.slot_button_width = 476
+define gui.slot_button_height = 146
+define gui.slot_button_borders = Borders(0, -10, 0,0)
+define gui.slot_button_text_size = 18
 define gui.slot_button_text_xalign = 0.5
 define gui.slot_button_text_idle_color = gui.idle_small_color
 define gui.slot_button_text_selected_idle_color = gui.selected_color
@@ -236,8 +236,8 @@ define config.thumbnail_width = 256
 define config.thumbnail_height = 144
 
 ## Número de columnas y filas de la cuadrícula de partidas guardadas.
-define gui.file_slot_cols = 3
-define gui.file_slot_rows = 2
+define gui.file_slot_cols = 2
+define gui.file_slot_rows = 3
 
 
 ## Posicionamiento y espacios ##################################################
